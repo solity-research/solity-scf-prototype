@@ -16,7 +16,7 @@ class MetricsService {
   private _baseUri: string;
 
   constructor() {
-    this._baseUri = `http://${process.env.NEXT_PUBLIC_BASE_URI}/api/`;
+    this._baseUri = `https://${process.env.NEXT_PUBLIC_BASE_URI}/`;
   }
 
   public get baseUri() {
@@ -31,10 +31,19 @@ class MetricsService {
     const call = reqMethods[method];
     const uri = this._baseUri + endpoint;
     const isBody = method === "put" || method === "patch";
-    const res = await (isBody
+    const res: any = await (isBody
       ? call<any, ResponseType<T>>(uri, body)
       : call<any, ResponseType<T>>(uri));
-    return res.data;
+    if (res.data._embedded) {
+      const {
+        _embedded: { records },
+        _links: { self, next, prev },
+      } = res.data as any;
+
+      return { records, self, next, prev };
+    } else {
+      return res.data;
+    }
   }
 
   public async get<T = any>(endpoint: string) {

@@ -4,9 +4,10 @@ import DataTable from "../DataTable";
 import { shrinkAddress } from "@solity/helpers";
 
 export default function AssetList({ id }: { id: string }) {
+  const [code, issuer] = id.split(":");
   return (
     <Stack spacing={4}>
-      <Typography variant="h5">{id.split(":")[0]}</Typography>
+      <Typography variant="h5">{code}</Typography>
       <DataTable<any>
         cols={[
           {
@@ -35,7 +36,7 @@ export default function AssetList({ id }: { id: string }) {
             title: "Liquidity Pools",
           },
         ]}
-        endpoint={`assets/${id}`}
+        endpoint={`assets?assetCode=${code}&assetIssuer=${issuer}`}
       />
     </Stack>
   );

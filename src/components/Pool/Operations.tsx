@@ -1,4 +1,4 @@
-import { Box, Chip, Stack, Tooltip } from "@mui/material";
+import { Box, Chip, Stack, Tooltip, Typography } from "@mui/material";
 import { HorizonOperationType, HorizonPoolType } from "@solity/types/Horizon";
 import SubtleHeading from "../SubtleHeading";
 import DataTable from "../DataTable";
@@ -20,7 +20,7 @@ export default function Operations({ pool }: P) {
             title: "Hash",
             format: (v) => (
               <Tooltip title={v}>
-                <Box>{shrinkAddress(v!.toString())}</Box>
+                <Box>{v ? shrinkAddress(v.toString()) : "N/A"}</Box>
               </Tooltip>
             ),
           },
@@ -29,7 +29,7 @@ export default function Operations({ pool }: P) {
             title: "From",
             format: (v) => (
               <Tooltip title={v}>
-                <Box>{shrinkAddress(v!.toString())}</Box>
+                <Box>{v ? shrinkAddress(v.toString()) : "N/A"}</Box>
               </Tooltip>
             ),
           },
@@ -38,7 +38,7 @@ export default function Operations({ pool }: P) {
             title: "To",
             format: (v) => (
               <Tooltip title={v}>
-                <Box>{shrinkAddress(v!.toString())}</Box>
+                <Box>{v ? shrinkAddress(v.toString()) : "N/A"}</Box>
               </Tooltip>
             ),
           },
@@ -97,9 +97,13 @@ export default function Operations({ pool }: P) {
               spacing={1}
               sx={{ overflowX: "auto" }}
             >
-              {selected.path.map((p) => (
-                <Chip label={p.asset_code || p.asset_type} />
-              ))}
+              {selected.path ? (
+                selected.path.map((p) => (
+                  <Chip label={p.asset_code || p.asset_type} />
+                ))
+              ) : (
+                <Typography>N/A</Typography>
+              )}
             </Stack>
             <SubtleHeading text="Source" />
             <Description
