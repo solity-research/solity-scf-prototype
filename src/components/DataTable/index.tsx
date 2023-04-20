@@ -72,7 +72,7 @@ export default function DataTable<T extends { id: string }>({
           </TableRow>
         </TableHead>
         <TableBody>
-          {data && data.records.length > 0 ? (
+          {!loading && !error && data && data.records.length > 0 ? (
             <>
               {data.records.map((p) => (
                 <TableRow
@@ -99,7 +99,13 @@ export default function DataTable<T extends { id: string }>({
               <TableRow>
                 <TableCell colSpan={cols.length}>
                   <Stack alignItems="center">
-                    {loading ? <CircularProgress /> : "No Data"}
+                    {loading ? (
+                      <CircularProgress />
+                    ) : error ? (
+                      error.message
+                    ) : (
+                      "No Data"
+                    )}
                   </Stack>
                 </TableCell>
               </TableRow>
