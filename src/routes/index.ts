@@ -5,13 +5,8 @@ export default [
     path: "/",
   },
   {
-    name: "Risk Frameworks",
-    key: "rf",
-    path: "/risk-frameworks",
-  },
-  {
-    name: "Comparison",
-    key: "compare",
-    path: "/compare",
+    name: "About",
+    key: "about",
+    path: "/about",
   },
 ];
