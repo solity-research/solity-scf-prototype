@@ -22,7 +22,7 @@ export type HorizonTransactionType = {
   signatures: string[];
   valid_after: string;
   valid_before: string;
-  preconditions: HorizonTransactionPreconditionsType;
+  preconditions?: HorizonTransactionPreconditionsType;
 };
 
 export interface HorizonTransactionLinksType {

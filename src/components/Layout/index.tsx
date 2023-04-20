@@ -3,7 +3,7 @@ import { SolityLogo } from "@solity/components";
 import routes from "@solity/routes";
 import { usePathname, useRouter } from "next/navigation";
 
-export default function Layout({ children }: any) {
+export default function Layout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
   return (
