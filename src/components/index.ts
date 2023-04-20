@@ -1,4 +1,5 @@
 export { default as SolityLogo } from "./Logo";
+export { default as AssetList } from "./Assets";
 export { default as CardModal } from "./CardModal";
 export { default as Dashboard } from "./Dashboard";
 export { default as Description } from "./Description";
