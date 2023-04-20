@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 import { HorizonPoolType } from "@solity/types/Horizon";
 import SubtleHeading from "../SubtleHeading";
+import Link from "next/link";
 
 type P = { pool: HorizonPoolType };
 
@@ -22,18 +23,20 @@ export default function Reserves({ pool }: P) {
           const [code] = res.asset.split(":");
           return (
             <Grid item xs={6} sx={isFirst ? { pr: 1 } : { pl: 1 }}>
-              <Card key={res.asset} variant="outlined">
-                <CardContent>
-                  <Stack
-                    direction="row"
-                    justifyContent="space-between"
-                    alignItems="center"
-                  >
-                    <Typography>{code}</Typography>
-                    <Stack>{res.amount}</Stack>
-                  </Stack>
-                </CardContent>
-              </Card>
+              <Link href={`/asset/${res.asset}`}>
+                <Card key={res.asset} variant="outlined">
+                  <CardContent>
+                    <Stack
+                      direction="row"
+                      justifyContent="space-between"
+                      alignItems="center"
+                    >
+                      <Typography>{code}</Typography>
+                      <Stack>{res.amount}</Stack>
+                    </Stack>
+                  </CardContent>
+                </Card>
+              </Link>
             </Grid>
           );
         })}

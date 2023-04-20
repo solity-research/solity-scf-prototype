@@ -32,7 +32,7 @@ export default function PoolDetail({ id }: P) {
           Shares: {data.total_shares}
         </Typography>
         <Typography color={palette.text.secondary}>
-          Fee: {data?.fee_bp}
+          Fee: {data?.fee_bp} XLM
         </Typography>
       </Stack>
       <Card>
