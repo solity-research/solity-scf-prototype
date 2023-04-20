@@ -6,6 +6,7 @@ import { CacheProvider, EmotionCache } from "@emotion/react";
 import theme from "@solity/theme";
 import { createEmotionCache } from "@solity/helpers";
 import { Layout } from "@solity/components";
+import "@solity/styles/global.css";
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
