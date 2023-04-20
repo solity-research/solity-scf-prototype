@@ -7,7 +7,7 @@ export default function AssetList({ id }: { id: string }) {
   return (
     <Stack spacing={4}>
       <Typography variant="h5">{id.split(":")[0]}</Typography>
-      <DataTable<HorizonAssetType>
+      <DataTable<any>
         cols={[
           {
             key: "asset_issuer",
