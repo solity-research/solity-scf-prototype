@@ -14,9 +14,9 @@ export default function PoolsTable() {
           key: undefined,
           format: (_, p) => generatePoolName(p),
         },
-        { title: "Type", key: "type" },
-        { title: "Fee", key: "fee_bp" },
+        { title: "Fee", key: "fee_bp", format: (v) => v + " XLM" },
         { title: "Total Shares", key: "total_shares" },
+        { title: "Last Update", key: "last_modified_time" },
       ]}
       endpoint="liquidity_pools"
       onRowClick={(p) => router.push(`/pools/${p.id}`)}
