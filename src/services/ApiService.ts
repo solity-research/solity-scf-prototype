@@ -16,7 +16,7 @@ class MetricsService {
   private _baseUri: string;
 
   constructor() {
-    this._baseUri = `http://localhost:3000/api/`;
+    this._baseUri = `http://${process.env.NEXT_PUBLIC_BASE_URI}/api/`;
   }
 
   public get baseUri() {
