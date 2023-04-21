@@ -13,6 +13,7 @@ import { HorizonPoolType } from "@solity/types/Horizon";
 import Transactions from "./Transactions";
 import Reserves from "./Reserves";
 import Operations from "./Operations";
+import RiskScoreBars from "../Dashboard/RiskScoreBars";
 
 type P = { id: string };
 
@@ -25,15 +26,23 @@ export default function PoolDetail({ id }: P) {
   return data ? (
     <Stack spacing={4}>
       <Stack spacing={1}>
-        <Stack direction="row" spacing={2} alignItems="flex-end">
-          <Typography variant="h5">{generatePoolName(data)} Pool</Typography>
+        <Stack
+          direction="row"
+          spacing={2}
+          alignItems="center"
+          justifyContent="space-between"
+        >
+          <Stack spacing={1}>
+            <Typography variant="h5">{generatePoolName(data)} Pool</Typography>
+            <Typography color={palette.text.secondary}>
+              Shares: {data.total_shares}
+            </Typography>
+            <Typography color={palette.text.secondary}>
+              Fee: {data.fee_bp / 100}%
+            </Typography>
+          </Stack>
+          <RiskScoreBars pool={data} />
         </Stack>
-        <Typography color={palette.text.secondary}>
-          Shares: {data.total_shares}
-        </Typography>
-        <Typography color={palette.text.secondary}>
-          Fee: {data.fee_bp / 100}%
-        </Typography>
       </Stack>
       <Card>
         <CardContent>
