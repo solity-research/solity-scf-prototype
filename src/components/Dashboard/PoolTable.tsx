@@ -10,13 +10,16 @@ export default function PoolsTable() {
     <DataTable<HorizonPoolType>
       cols={[
         {
-          title: "Name",
+          title: "Pair",
           key: undefined,
           format: (_, p) => generatePoolName(p),
         },
-        { title: "Fee", key: "fee_bp", format: (v) => v + " XLM" },
-        { title: "Total Shares", key: "total_shares" },
-        { title: "Last Update", key: "last_modified_time" },
+        { title: "Fee", key: "fee_bp", format: (v) => `${v / 100}%` },
+        {
+          title: "Last Update",
+          key: "last_modified_time",
+          format: (v) => new Date(v).toLocaleDateString(),
+        },
       ]}
       endpoint="liquidity_pools"
       onRowClick={(p) => router.push(`/pools/${p.id}`)}
