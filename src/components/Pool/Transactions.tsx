@@ -44,7 +44,7 @@ export default function Transactions({ pool }: P) {
           {
             key: "fee_charged",
             title: "Fee",
-            format: (v) => `${v / 100}%`,
+            format: (v) => `${(v as number) / 100}%`,
           },
           {
             key: "successful",

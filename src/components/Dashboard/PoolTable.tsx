@@ -14,11 +14,15 @@ export default function PoolsTable() {
           key: undefined,
           format: (_, p) => generatePoolName(p),
         },
-        { title: "Fee", key: "fee_bp", format: (v) => `${v / 100}%` },
+        {
+          title: "Fee",
+          key: "fee_bp",
+          format: (v) => `${(v as number) / 100}%`,
+        },
         {
           title: "Last Update",
           key: "last_modified_time",
-          format: (v) => new Date(v).toLocaleDateString(),
+          format: (v) => new Date(v as string).toLocaleDateString(),
         },
       ]}
       endpoint="liquidity_pools"
